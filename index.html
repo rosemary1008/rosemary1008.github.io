@@ -130,15 +130,7 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
 .edu-degree { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--navy); margin-bottom: 6px; }
 .edu-school { font-size: 13px; color: var(--muted); }
 
-/* ABOUT */
-.about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 44px; }
-.stat { background: var(--blue-frost); border: 1px solid var(--border); border-radius: 12px; padding: 24px 20px; text-align: center; }
-.stat-num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 400; color: var(--navy); display: block; margin-bottom: 6px; }
-.stat-label { font-size: 12px; color: var(--muted); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.about-card { background: var(--blue-frost); border: 1px solid var(--border); border-left: 3px solid var(--blue-mid); border-radius: 0 10px 10px 0; padding: 22px 24px; }
-.about-card-title { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-mid); margin-bottom: 10px; font-weight: 500; }
-.about-card p { font-size: 13px; color: #334d66; line-height: 1.7; }
+
 
 .hint-text { font-size: 12px; color: var(--muted); margin-top: 24px; }
 
@@ -186,7 +178,7 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
     <button class="nav-btn active" onclick="show('exp', this)" data-zh="工作經歷" data-en="Experience">工作經歷</button>
     <button class="nav-btn" onclick="show('skills', this)" data-zh="能力技能" data-en="Skills">能力技能</button>
     <button class="nav-btn" onclick="show('edu', this)" data-zh="學歷" data-en="Education">學歷</button>
-    <button class="nav-btn" onclick="show('about', this)" data-zh="關於我" data-en="About">關於我</button>
+    
   </div>
 </nav>
 
@@ -216,7 +208,7 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
         <span class="tag" data-skill="利害關係人管理" data-en="Stakeholder Management" onclick="tagToSkill(this)">利害關係人管理</span>
         <span class="tag" data-skill="BPM／ERP 串接規劃" data-en="BPM/ERP Integration" onclick="tagToSkill(this)">BPM／ERP 串接規劃</span>
         <span class="tag" data-skill="BPM／ERP 串接規劃" data-en="API Integration" onclick="tagToSkill(this)">API 串接</span>
-        <span class="tag-plain" data-en="Enterprise Onboarding">企業導入</span>
+        <span class="tag-plain" data-zh="企業導入" data-en="Enterprise Onboarding">企業導入</span>
       </div>
     </div>
   </div>
@@ -240,7 +232,7 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
         <span class="tag" data-skill="數據驅動決策" data-en="Data-driven Decision Making" onclick="tagToSkill(this)">數據驅動決策</span>
         <span class="tag" data-skill="跨職能團隊協作" data-en="Cross-functional Collaboration" onclick="tagToSkill(this)">跨職能團隊協作</span>
         <span class="tag" data-skill="利害關係人管理" data-en="Stakeholder Management" onclick="tagToSkill(this)">利害關係人管理</span>
-        <span class="tag-plain" data-en="User Growth">用戶增長</span>
+        <span class="tag-plain" data-zh="用戶增長" data-en="User Growth">用戶增長</span>
       </div>
     </div>
   </div>
@@ -262,9 +254,9 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
         <span class="tag" data-skill="跨職能團隊協作" data-en="Cross-functional Collaboration" onclick="tagToSkill(this)">跨職能團隊協作</span>
         <span class="tag" data-skill="利害關係人管理" data-en="Stakeholder Management" onclick="tagToSkill(this)">利害關係人管理</span>
         <span class="tag" data-skill="數據驅動決策" data-en="Data-driven Decision Making" onclick="tagToSkill(this)">數據驅動決策</span>
-        <span class="tag-plain" data-en="HRM Implementation">HRM 系統導入</span>
-        <span class="tag-plain" data-en="Financial Planning">財務規劃</span>
-        <span class="tag-plain" data-en="Legal Compliance">法務合規</span>
+        <span class="tag-plain" data-zh="HRM 系統導入" data-en="HRM Implementation">HRM 系統導入</span>
+        <span class="tag-plain" data-zh="財務規劃" data-en="Financial Planning">財務規劃</span>
+        <span class="tag-plain" data-zh="法務合規" data-en="Legal Compliance">法務合規</span>
       </div>
     </div>
   </div>
@@ -287,9 +279,9 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
         <span class="tag" data-skill="用戶研究與客戶洞察" data-en="User Research & Customer Empathy" onclick="tagToSkill(this)">用戶研究與客戶洞察</span>
         <span class="tag" data-skill="跨職能團隊協作" data-en="Cross-functional Collaboration" onclick="tagToSkill(this)">跨職能團隊協作</span>
         <span class="tag" data-skill="利害關係人管理" data-en="Stakeholder Management" onclick="tagToSkill(this)">利害關係人管理</span>
-        <span class="tag-plain" data-en="E-commerce Operations">電商營運</span>
-        <span class="tag-plain" data-en="MVP Validation">MVP 驗證</span>
-        <span class="tag-plain" data-en="User Growth">用戶增長</span>
+        <span class="tag-plain" data-zh="電商營運" data-en="E-commerce Operations">電商營運</span>
+        <span class="tag-plain" data-zh="MVP 驗證" data-en="MVP Validation">MVP 驗證</span>
+        <span class="tag-plain" data-zh="用戶增長" data-en="User Growth">用戶增長</span>
       </div>
     </div>
   </div>
@@ -372,34 +364,6 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
   </div>
 </div>
 
-<!-- ABOUT -->
-<div id="about" class="section">
-  <div class="about-stats">
-    <div class="stat"><span class="stat-num">5</span><p class="stat-label" data-zh="年 PM 經驗" data-en="Years as PM">年 PM 經驗</p></div>
-    <div class="stat"><span class="stat-num">B2B</span><p class="stat-label" data-zh="主要專注領域" data-en="Primary Focus">主要專注領域</p></div>
-    <div class="stat"><span class="stat-num">ASE</span><p class="stat-label" data-zh="上市大廠導入案" data-en="Listed Enterprise Client">上市大廠導入案</p></div>
-    <div class="stat"><span class="stat-num" data-zh="遠端" data-en="Remote">遠端</span><p class="stat-label" data-zh="開放工作型態" data-en="Open to Remote">開放工作型態</p></div>
-  </div>
-  <div class="about-grid">
-    <div class="about-card">
-      <p class="about-card-title" data-zh="我如何做需求" data-en="How I approach requirements">我如何做需求</p>
-      <p data-zh="習慣先挖掘需求背後的根本原因再收斂解法。在多客戶環境中，我會評估跨客戶影響、替代方案的存在與否、以及需求的兼容性，才排定優先順序。" data-en="I always dig for root causes before converging on solutions. In multi-client environments, I evaluate cross-client impact, availability of workarounds, and compatibility before setting priority.">習慣先挖掘需求背後的根本原因再收斂解法。在多客戶環境中，我會評估跨客戶影響、替代方案的存在與否、以及需求的兼容性，才排定優先順序。</p>
-    </div>
-    <div class="about-card">
-      <p class="about-card-title" data-zh="面對複雜客戶" data-en="Navigating complex clients">面對複雜客戶</p>
-      <p data-zh="在日月光 ASE 導入案中，我同時對接財務主管、IT 與基層使用者，理解每一方關注點不同，在客戶期望與產品邊界間找到平衡。" data-en="During the ASE onboarding, I simultaneously managed finance leads, IT, and end users — each with different concerns. My role was to balance client expectations with product boundaries.">在日月光 ASE 導入案中，我同時對接財務主管、IT 與基層使用者，理解每一方關注點不同，在客戶期望與產品邊界間找到平衡。</p>
-    </div>
-    <div class="about-card">
-      <p class="about-card-title" data-zh="我的成長軌跡" data-en="My trajectory">我的成長軌跡</p>
-      <p data-zh="從時尚零售到軟體 PM，跨域的背景讓我習慣從不同角色的視角思考問題——這是我在 B2B 產品中最重要的能力來源。" data-en="From fashion retail to software PM — this cross-domain background taught me to think from multiple stakeholder perspectives, which is my biggest asset in B2B product work.">從時尚零售到軟體 PM，跨域的背景讓我習慣從不同角色的視角思考問題——這是我在 B2B 產品中最重要的能力來源。</p>
-    </div>
-    <div class="about-card">
-      <p class="about-card-title" data-zh="求職偏好" data-en="What I'm looking for">求職偏好</p>
-      <p data-zh="希望加入國際知名企業，對遠端工作有意願，並開放考慮海外機會（歐美、亞洲等）。偏好 B2B SaaS 產品方向。" data-en="Looking to join a globally recognized company. Open to remote work and international relocation (US, EU, Asia). Prefer B2B SaaS product roles.">希望加入國際知名企業，對遠端工作有意願，並開放考慮海外機會（歐美、亞洲等）。偏好 B2B SaaS 產品方向。</p>
-    </div>
-  </div>
-</div>
-
 <script>
 let currentLang = 'zh';
 
@@ -467,15 +431,15 @@ function setLang(lang, btn) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('[data-zh]').forEach(el => {
-    if (el.tagName !== 'BUTTON' && !el.classList.contains('tag') && !el.classList.contains('nav-btn')) {
+    if (el.tagName !== 'BUTTON' && !el.classList.contains('tag') && !el.classList.contains('tag-plain') && !el.classList.contains('nav-btn')) {
       el.textContent = el.getAttribute('data-' + lang);
     }
   });
   document.querySelectorAll('.tag[data-en]').forEach(tag => {
     tag.textContent = lang === 'en' ? tag.getAttribute('data-en') : tag.getAttribute('data-skill');
   });
-  document.querySelectorAll('.tag-plain[data-en]').forEach(tag => {
-    tag.textContent = lang === 'en' ? tag.getAttribute('data-en') : tag.textContent;
+  document.querySelectorAll('.tag-plain[data-zh]').forEach(tag => {
+    tag.textContent = tag.getAttribute('data-' + lang);
   });
   document.querySelectorAll('.nav-btn[data-zh]').forEach(b => {
     b.textContent = b.getAttribute('data-' + lang);
