@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosemary Chao — Product Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #1e3a5f;
+  --blue-mid: #2e6da4;
+  --blue-light: #5b9ecf;
+  --blue-pale: #a8c8e8;
+  --blue-wash: #deedf8;
+  --blue-frost: #f0f7fc;
+  --white: #ffffff;
+  --text: #1a2e40;
+  --muted: #5a7a96;
+  --border: #c8dff0;
+}
+body { font-family: 'Inter', sans-serif; font-weight: 300; color: var(--text); background: var(--white); line-height: 1.7; }
+
+header { background: linear-gradient(135deg, var(--navy) 0%, var(--blue-mid) 100%); color: white; padding: 64px 64px 48px; position: relative; overflow: hidden; }
+header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 360px; height: 360px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+.header-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-pale); margin-bottom: 16px; }
+.header-name { font-family: 'Playfair Display', serif; font-size: clamp(42px, 7vw, 72px); font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 20px; color: white; }
+.header-summary { max-width: 520px; margin-bottom: 36px; }
+.header-summary ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.header-summary li { font-size: 14px; color: rgba(255,255,255,0.75); padding-left: 16px; position: relative; font-weight: 300; }
+.header-summary li::before { content: ''; position: absolute; left: 0; top: 9px; width: 4px; height: 4px; border-radius: 50%; background: var(--blue-pale); }
+.header-contacts { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+.header-contacts a, .header-contacts span { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+.header-contacts a:hover { color: white; }
+.contact-sep { width: 1px; height: 14px; background: rgba(255,255,255,0.2); }
+
+.lang-toggle { position: absolute; top: 28px; right: 64px; display: flex; background: rgba(255,255,255,0.1); border-radius: 100px; padding: 3px; border: 1px solid rgba(255,255,255,0.15); }
+.lang-btn { padding: 5px 14px; border: none; background: transparent; color: rgba(255,255,255,0.6); font-size: 12px; font-family: 'Inter', sans-serif; font-weight: 400; border-radius: 100px; cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em; }
+.lang-btn.active { background: white; color: var(--navy); font-weight: 500; }
+
+nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white; position: sticky; top: 0; z-index: 10; }
+.nav-inner { display: flex; overflow-x: auto; }
+.nav-btn { padding: 18px 22px; background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted); font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; cursor: pointer; white-space: nowrap; transition: color 0.2s, border-color 0.2s; margin-bottom: -1px; }
+.nav-btn:hover { color: var(--navy); }
+.nav-btn.active { color: var(--blue-mid); border-bottom-color: var(--blue-mid); font-weight: 500; }
+
+.section { display: none; padding: 40px 64px 60px; max-width: 960px; animation: fadeIn 0.25s ease; }
+.section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* EXPERIENCE */
+.exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 48px; padding: 40px 0; border-bottom: 1px solid var(--border); }
+.exp-item:last-child { border-bottom: none; }
+.exp-period { font-size: 12px; color: var(--blue-mid); letter-spacing: 0.06em; margin-bottom: 6px; font-weight: 500; }
+.exp-company { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+.exp-duration { font-size: 12px; color: var(--blue-pale); }
+.exp-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; margin-bottom: 20px; color: var(--navy); line-height: 1.25; }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.exp-bullets li { font-size: 14px; color: #334d66; padding-left: 18px; position: relative; line-height: 1.65; }
+.exp-bullets li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--blue-light); }
+.bullet-label { font-weight: 500; color: var(--navy); }
+
+/* TAGS — clickable */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-size: 11px; padding: 4px 10px;
+  background: var(--blue-frost); color: var(--blue-mid);
+  border-radius: 100px; letter-spacing: 0.03em;
+  border: 1px solid var(--blue-wash);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  user-select: none;
+}
+.tag:hover { background: var(--blue-wash); border-color: var(--blue-light); transform: translateY(-1px); }
+.tag.highlighted { background: var(--navy); color: white; border-color: var(--navy); }
+
+/* TAGS — plain (no interaction) */
+.tag-plain {
+  font-size: 11px; padding: 4px 10px;
+  background: var(--blue-frost); color: var(--blue-mid);
+  border-radius: 100px; letter-spacing: 0.03em;
+  border: 1px solid var(--blue-wash);
+  cursor: default;
+  user-select: none;
+}
+
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.skill-card { background: var(--blue-frost); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+.skill-card-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 14px; font-weight: 500; }
+
+/* Clickable skill list */
+.skill-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.skill-list li {
+  font-size: 13px; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer; border-radius: 6px;
+  padding: 4px 6px; margin: -4px -6px;
+  transition: background 0.15s, color 0.15s;
+}
+.skill-list li::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--blue-mid); flex-shrink: 0; }
+.skill-list li:hover { background: var(--blue-wash); }
+.skill-list li.highlighted { background: var(--navy); color: white; }
+.skill-list li.highlighted::before { background: var(--blue-pale); }
+
+/* Non-clickable skill list */
+.skill-list-plain { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.skill-list-plain li { font-size: 13px; color: var(--text); display: flex; align-items: center; gap: 8px; cursor: default; padding: 4px 0; }
+.skill-list-plain li::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--blue-mid); flex-shrink: 0; }
+
+/* Domain split B2B/B2C */
+.domain-section { margin-bottom: 14px; }
+.domain-section:last-child { margin-bottom: 0; }
+.domain-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--navy); color: white; font-size: 12px;
+  padding: 8px 18px; border-radius: 100px;
+  opacity: 0; transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none; z-index: 100; white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* EDU */
+.edu-item { display: grid; grid-template-columns: 200px 1fr; gap: 48px; padding: 36px 0; border-bottom: 1px solid var(--border); }
+.edu-item:last-child { border-bottom: none; }
+.edu-year { font-size: 12px; color: var(--blue-mid); letter-spacing: 0.06em; font-weight: 500; }
+.edu-degree { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--navy); margin-bottom: 6px; }
+.edu-school { font-size: 13px; color: var(--muted); }
+
+
+
+.hint-text { font-size: 12px; color: var(--muted); margin-top: 24px; }
+
+@media (max-width: 700px) {
+  header { padding: 48px 24px 36px; }
+  nav { padding: 0 24px; }
+  .section { padding: 32px 24px 48px; }
+  .exp-item, .edu-item { grid-template-columns: 1fr; gap: 12px; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  .lang-toggle { top: 20px; right: 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<header>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('zh', this)">中文</button>
+    <button class="lang-btn" onclick="setLang('en', this)">EN</button>
+  </div>
+  <p class="header-label">Product Manager · B2B SaaS</p>
+  <h1 class="header-name">Rosemary Chao</h1>
+  <div class="header-summary">
+    <ul>
+      <li data-zh="5 年 B2B SaaS 產品經理經驗" data-en="5 years of B2B SaaS product management experience">5 年 B2B SaaS 產品經理經驗</li>
+      <li data-zh="專注企業費用報銷與數位企業卡產品" data-en="Focused on enterprise expense management and corporate card products">專注企業費用報銷與數位企業卡產品</li>
+      <li data-zh="具 ERP 系統整合設計與大型企業導入實戰經驗" data-en="Hands-on ERP integration design and large enterprise onboarding experience">具 ERP 系統整合設計與大型企業導入實戰經驗</li>
+      <li data-zh="服務客戶涵蓋日月光 ASE、精誠資訊、KKCompany 等上市上櫃企業" data-en="Serving listed enterprises including ASE Group, Systex, and KKCompany">服務客戶涵蓋日月光 ASE、精誠資訊、KKCompany 等上市上櫃企業</li>
+    </ul>
+  </div>
+  <div class="header-contacts">
+    <a href="mailto:rosemarychao.tid@gmail.com">rosemarychao.tid@gmail.com</a>
+    <span class="contact-sep"></span>
+    <a href="https://www.linkedin.com/in/rosemary-chao" target="_blank">LinkedIn</a>
+    <span class="contact-sep"></span>
+    <span data-zh="台北市 · 開放遠端" data-en="Taipei · Open to Remote">台北市 · 開放遠端</span>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="show('exp', this)" data-zh="工作經歷" data-en="Experience">工作經歷</button>
+    <button class="nav-btn" onclick="show('skills', this)" data-zh="能力技能" data-en="Skills">能力技能</button>
+    <button class="nav-btn" onclick="show('edu', this)" data-zh="學歷" data-en="Education">學歷</button>
+    
+  </div>
+</nav>
+
+<!-- EXPERIENCE -->
+<div id="exp" class="section active">
+
+  <div class="exp-item" id="job-commeet">
+    <div>
+      <p class="exp-period">2023.08 — <span data-zh="現在" data-en="Present">現在</span></p>
+      <p class="exp-company">COMMEET 擁樂數據</p>
+      <p class="exp-duration" data-zh="2 年 +" data-en="2+ yrs">2 年 +</p>
+    </div>
+    <div>
+      <h2 class="exp-title" data-zh="產品經理" data-en="Product Manager">產品經理</h2>
+      <ul class="exp-bullets">
+        <li><span class="bullet-label" data-zh="產品策略與規劃：" data-en="Product Strategy: ">產品策略與規劃：</span><span data-zh="依據企業客戶需求與市場趨勢，規劃費用報銷與數位企業卡產品路線圖，推進產品競爭力與市場契合度" data-en="Defined roadmap for expense reimbursement and corporate card products aligned with enterprise client needs and market trends">依據企業客戶需求與市場趨勢，規劃費用報銷與數位企業卡產品路線圖，推進產品競爭力與市場契合度</span></li>
+        <li><span class="bullet-label" data-zh="需求分析與功能設計：" data-en="Requirements Analysis: ">需求分析與功能設計：</span><span data-zh="拆解 BD／CS 需求背後的根本原因，評估例外情境與跨客戶兼容性，確保解法可擴展且不增加使用者負擔；設計支援財務管控與多角色使用場景的產品功能與邏輯" data-en="Decomposed BD/CS requests to root causes, evaluated edge cases and cross-client compatibility; designed features supporting multi-role workflows and finance control">拆解 BD／CS 需求背後的根本原因，評估例外情境與跨客戶兼容性，確保解法可擴展且不增加使用者負擔；設計支援財務管控與多角色使用場景的產品功能與邏輯</span></li>
+        <li><span class="bullet-label" data-zh="跨部門協作與專案管理：" data-en="Cross-functional Collaboration: ">跨部門協作與專案管理：</span><span data-zh="與開發團隊密切合作，撰寫 PRD，搭配數據佐證規劃細節，控管時程與交付品質" data-en="Collaborated closely with engineering, wrote data-backed PRDs, and managed timelines and delivery quality">與開發團隊密切合作，撰寫 PRD，搭配數據佐證規劃細節，控管時程與交付品質</span></li>
+        <li><span class="bullet-label" data-zh="BPM × ERP 系統整合：" data-en="BPM × ERP Integration: ">BPM × ERP 系統整合：</span><span data-zh="設計跨系統資料拋轉規則，實現傳票與稅務檔自動建立，全面消除財務人員手動 key-in 作業，排除人工出錯風險；負責 API 驗測協作與規格確認" data-en="Designed cross-system data transfer rules to automate voucher and tax record creation — eliminating all manual data entry; led API validation and spec alignment">設計跨系統資料拋轉規則，實現傳票與稅務檔自動建立，全面消除財務人員手動 key-in 作業，排除人工出錯風險；負責 API 驗測協作與規格確認</span></li>
+        <li><span class="bullet-label" data-zh="日月光 ASE 企業導入專案：" data-en="ASE Group Onboarding: ">日月光 ASE 企業導入專案：</span><span data-zh="擔任系統導入 PM（歷時半年），負責需求探討、工時評估與報價協作，協助客戶從零設計財務費用管理流程，同時對接財務主管、IT 與基層使用者，於導入過程持續提供使用情境建議" data-en="Served as implementation PM (6 months), handling requirements scoping, effort estimation and pricing coordination; helped client design expense workflows from scratch while managing finance leads, IT, and end users">擔任系統導入 PM（歷時半年），負責需求探討、工時評估與報價協作，協助客戶從零設計財務費用管理流程，同時對接財務主管、IT 與基層使用者，於導入過程持續提供使用情境建議</span></li>
+      </ul>
+      <div class="tags">
+        <span class="tag" data-skill="需求分析" data-en="Requirements Analysis" onclick="tagToSkill(this)">需求分析</span>
+        <span class="tag" data-skill="用戶研究與客戶洞察" data-en="User Research & Customer Empathy" onclick="tagToSkill(this)">用戶研究與客戶洞察</span>
+        <span class="tag" data-skill="PRD" data-en="PRD" onclick="tagToSkill(this)">PRD</span>
+        <span class="tag" data-skill="跨職能團隊協作" data-en="Cross-functional Collaboration" onclick="tagToSkill(this)">跨職能團隊協作</span>
+        <span class="tag" data-skill="利害關係人管理" data-en="Stakeholder Management" onclick="tagToSkill(this)">利害關係人管理</span>
+        <span class="tag" data-skill="BPM／ERP 串接規劃" data-en="BPM/ERP Integration" onclick="tagToSkill(this)">BPM／ERP 串接規劃</span>
+        <span class="tag" data-skill="BPM／ERP 串接規劃" data-en="API Integration" onclick="tagToSkill(this)">API 串接</span>
+        <span class="tag-plain" data-zh="企業導入" data-en="Enterprise Onboarding">企業導入</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item" id="job-engagedai">
+    <div>
+      <p class="exp-period">2022.04 — 2023.06</p>
+      <p class="exp-company">UNH3O 一氧化三氫數位</p>
+      <p class="exp-duration" data-zh="1 年 3 個月" data-en="1 yr 3 mo">1 年 3 個月</p>
+    </div>
+    <div>
+      <h2 class="exp-title" data-zh="營運副總兼 Engaged.AI 產品經理" data-en="VP of Operations & Engaged.AI PM">營運副總兼 Engaged.AI 產品經理</h2>
+      <ul class="exp-bullets">
+        <li><span class="bullet-label" data-zh="產品用戶需求分析：" data-en="User Research: ">產品用戶需求分析：</span><span data-zh="深入了解用戶行為數據和使用狀況，進行用戶訪談，制定產品發展策略，持續優化和滿足用戶需求" data-en="Conducted user interviews and analyzed behavior data to shape product strategy and continuously improve the product">深入了解用戶行為數據和使用狀況，進行用戶訪談，制定產品發展策略，持續優化和滿足用戶需求</span></li>
+        <li><span class="bullet-label" data-zh="用戶與業績增長：" data-en="Growth: ">用戶與業績增長：</span><span data-zh="建立可複製的用戶活化方法論（訪談 → 線上講座 → 主動外拓），親自驗證後轉交 intern 規模化執行，帶動用戶數增加 33%、單月業績最高成長 23%" data-en="Built a repeatable activation methodology (interviews → webinars → outbound), validated personally then scaled via interns — driving 33% user growth and 23% peak monthly revenue increase">建立可複製的用戶活化方法論（訪談 → 線上講座 → 主動外拓），親自驗證後轉交 intern 規模化執行，帶動用戶數增加 33%、單月業績最高成長 23%</span></li>
+        <li><span class="bullet-label" data-zh="產品營運與問題解決：" data-en="Product Operations: ">產品營運與問題解決：</span><span data-zh="排序問題優先順序，領導客服部門，最大化資源解決客戶問題；與開發團隊協作排查問題，確保產品穩定性" data-en="Prioritized issues, led customer support team, and collaborated with engineering to debug and ensure product stability">排序問題優先順序，領導客服部門，最大化資源解決客戶問題；與開發團隊協作排查問題，確保產品穩定性</span></li>
+      </ul>
+      <div class="tags">
+        <span class="tag" data-skill="需求分析" data-en="Requirements Analysis" onclick="tagToSkill(this)">需求分析</span>
+        <span class="tag" data-skill="用戶研究與客戶洞察" data-en="User Research & Customer Empathy" onclick="tagToSkill(this)">用戶研究與客戶洞察</span>
+        <span class="tag" data-skill="數據驅動決策" data-en="Data-driven Decision Making" onclick="tagToSkill(this)">數據驅動決策</span>
+        <span class="tag" data-skill="跨職能團隊協作" data-en="Cross-functional Collaboration" onclick="tagToSkill(this)">跨職能團隊協作</span>
+        <span class="tag" data-skill="利害關係人管理" data-en="Stakeholder Management" onclick="tagToSkill(this)">利害關係人管理</span>
+        <span class="tag-plain" data-zh="用戶增長" data-en="User Growth">用戶增長</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item" id="job-vp">
+    <div>
+      <p class="exp-period">2021.08 — 2022.04</p>
+      <p class="exp-company">UNH3O 一氧化三氫數位</p>
+      <p class="exp-duration" data-zh="8 個月" data-en="8 mo">8 個月</p>
+    </div>
+    <div>
+      <h2 class="exp-title" data-zh="營運副總" data-en="VP of Operations">營運副總</h2>
+      <ul class="exp-bullets">
+        <li><span class="bullet-label" data-zh="人資管理：" data-en="HR Management: ">人資管理：</span><span data-zh="負責全員出缺勤計算與績效考核，導入 HRM 系統，將薪資與差勤流程標準化" data-en="Managed attendance tracking and performance reviews; implemented HRM system to standardize payroll and leave management">負責全員出缺勤計算與績效考核，導入 HRM 系統，將薪資與差勤流程標準化</span></li>
+        <li><span class="bullet-label" data-zh="財務規劃：" data-en="Financial Planning: ">財務規劃：</span><span data-zh="定期彙整每月營收與成本費用結構，制定公司產品增長目標，與 CEO、CTO 討論確認後交由團隊執行" data-en="Compiled monthly revenue and cost structure, set product growth targets, and aligned with CEO and CTO before team execution">定期彙整每月營收與成本費用結構，制定公司產品增長目標，與 CEO、CTO 討論確認後交由團隊執行</span></li>
+        <li><span class="bullet-label" data-zh="法務與供應商管理：" data-en="Legal & Vendor: ">法務與供應商管理：</span><span data-zh="負責新進供應商與廠商合約審定，統籌財務、人資、法務三大職能，確保公司日常營運合規" data-en="Reviewed contracts for new suppliers and vendors; oversaw finance, HR, and legal functions to ensure operational compliance">負責新進供應商與廠商合約審定，統籌財務、人資、法務三大職能，確保公司日常營運合規</span></li>
+      </ul>
+      <div class="tags">
+        <span class="tag" data-skill="跨職能團隊協作" data-en="Cross-functional Collaboration" onclick="tagToSkill(this)">跨職能團隊協作</span>
+        <span class="tag" data-skill="利害關係人管理" data-en="Stakeholder Management" onclick="tagToSkill(this)">利害關係人管理</span>
+        <span class="tag" data-skill="數據驅動決策" data-en="Data-driven Decision Making" onclick="tagToSkill(this)">數據驅動決策</span>
+        <span class="tag-plain" data-zh="HRM 系統導入" data-en="HRM Implementation">HRM 系統導入</span>
+        <span class="tag-plain" data-zh="財務規劃" data-en="Financial Planning">財務規劃</span>
+        <span class="tag-plain" data-zh="法務合規" data-en="Legal Compliance">法務合規</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item" id="job-linkby">
+    <div>
+      <p class="exp-period">2020.08 — 2021.08</p>
+      <p class="exp-company">UNH3O 一氧化三氫數位</p>
+      <p class="exp-duration" data-zh="1 年" data-en="1 yr">1 年</p>
+    </div>
+    <div>
+      <h2 class="exp-title" data-zh="LinkBy 社群電商營運" data-en="LinkBy Social Commerce">LinkBy 社群電商營運</h2>
+      <ul class="exp-bullets">
+        <li><span class="bullet-label" data-zh="市場與用戶需求：" data-en="Market Validation: ">市場與用戶需求：</span><span data-zh="模擬測試環境，驗證市場需求，釐清用戶需求，回饋給開發團隊開發 MVP 及後續功能" data-en="Simulated test environments to validate market demand and user needs, feeding insights to dev team for MVP development">模擬測試環境，驗證市場需求，釐清用戶需求，回饋給開發團隊開發 MVP 及後續功能</span></li>
+        <li><span class="bullet-label" data-zh="用戶成長與客戶成功：" data-en="Growth & Success: ">用戶成長與客戶成功：</span><span data-zh="與 1,000 位健身教練合作，協助掌握推廣技巧，創造平均每月 10% 的業績成長" data-en="Partnered with 1,000+ fitness coaches on promotional strategy, driving average 10% monthly revenue growth">與 1,000 位健身教練合作，協助掌握推廣技巧，創造平均每月 10% 的業績成長</span></li>
+        <li><span class="bullet-label" data-zh="電商與客服管理：" data-en="Operations: ">電商與客服管理：</span><span data-zh="招商與 5,000+ 個商品資訊上架管理，協助消費者服務" data-en="Managed onboarding and listings for 5,000+ SKUs; supported consumer inquiries">招商與 5,000+ 個商品資訊上架管理，協助消費者服務</span></li>
+      </ul>
+      <div class="tags">
+        <span class="tag" data-skill="需求分析" data-en="Requirements Analysis" onclick="tagToSkill(this)">需求分析</span>
+        <span class="tag" data-skill="用戶研究與客戶洞察" data-en="User Research & Customer Empathy" onclick="tagToSkill(this)">用戶研究與客戶洞察</span>
+        <span class="tag" data-skill="跨職能團隊協作" data-en="Cross-functional Collaboration" onclick="tagToSkill(this)">跨職能團隊協作</span>
+        <span class="tag" data-skill="利害關係人管理" data-en="Stakeholder Management" onclick="tagToSkill(this)">利害關係人管理</span>
+        <span class="tag-plain" data-zh="電商營運" data-en="E-commerce Operations">電商營運</span>
+        <span class="tag-plain" data-zh="MVP 驗證" data-en="MVP Validation">MVP 驗證</span>
+        <span class="tag-plain" data-zh="用戶增長" data-en="User Growth">用戶增長</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills" class="section">
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <p class="skill-card-label" data-zh="核心能力" data-en="Core Skills">核心能力</p>
+      <ul class="skill-list">
+        <li data-skill="需求分析" data-en="Requirements Analysis" onclick="skillToExp(this)"><span data-zh="需求分析" data-en="Requirements Analysis">需求分析</span></li>
+        <li data-skill="用戶研究與客戶洞察" data-en="User Research & Customer Empathy" onclick="skillToExp(this)"><span data-zh="用戶研究與客戶洞察" data-en="User Research & Customer Empathy">用戶研究與客戶洞察</span></li>
+        <li data-skill="數據驅動決策" data-en="Data-driven Decision Making" onclick="skillToExp(this)"><span data-zh="數據驅動決策" data-en="Data-driven Decision Making">數據驅動決策</span></li>
+        <li data-skill="跨職能團隊協作" data-en="Cross-functional Collaboration" onclick="skillToExp(this)"><span data-zh="跨職能團隊協作" data-en="Cross-functional Collaboration">跨職能團隊協作</span></li>
+        <li data-skill="利害關係人管理" data-en="Stakeholder Management" onclick="skillToExp(this)"><span data-zh="利害關係人管理" data-en="Stakeholder Management">利害關係人管理</span></li>
+        <li data-skill="PRD" data-en="PRD Writing" onclick="skillToExp(this)"><span data-zh="PRD 撰寫" data-en="PRD Writing">PRD 撰寫</span></li>
+        <li data-skill="BPM／ERP 串接規劃" data-en="System Integration Design (BPM/ERP)" onclick="skillToExp(this)"><span data-zh="系統整合設計（BPM／ERP）" data-en="System Integration Design (BPM/ERP)">系統整合設計（BPM／ERP）</span></li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <p class="skill-card-label" data-zh="工具" data-en="Tools">工具</p>
+      <ul class="skill-list-plain">
+        <li>Claude</li>
+        <li>ChatGPT</li>
+        <li>ClickUp</li>
+        <li>Notion</li>
+        <li>Postman</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <p class="skill-card-label" data-zh="產業經驗" data-en="Domain Experience">產業經驗</p>
+      <div class="domain-section">
+        <p class="domain-label">B2B</p>
+        <ul class="skill-list-plain">
+          <li data-zh="企業費用管理" data-en="Enterprise Expense Management">企業費用管理</li>
+          <li data-zh="VISA 數位企業卡" data-en="VISA Digital Corporate Card">VISA 數位企業卡</li>
+          <li data-zh="社群平台數據分析工具" data-en="Social Analytics SaaS">社群平台數據分析工具</li>
+        </ul>
+      </div>
+      <div class="domain-section">
+        <p class="domain-label">B2C</p>
+        <ul class="skill-list-plain">
+          <li data-zh="社群平台數據分析工具" data-en="Social Analytics Tool">社群平台數據分析工具</li>
+          <li data-zh="社群電商" data-en="Social Commerce">社群電商</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <p class="skill-card-label" data-zh="語言" data-en="Languages">語言</p>
+      <ul class="skill-list-plain">
+        <li data-zh="中文（母語）" data-en="Mandarin Chinese (Native)">中文（母語）</li>
+        <li data-zh="英文（流利）" data-en="English (Fluent)">英文（流利）</li>
+      </ul>
+    </div>
+
+  </div>
+  <p class="hint-text" data-zh="💡 點擊核心能力項目，可跳至對應的工作經歷" data-en="💡 Click a core skill to jump to the related work experience">💡 點擊核心能力項目，可跳至對應的工作經歷</p>
+</div>
+
+<!-- EDUCATION -->
+<div id="edu" class="section">
+  <div class="edu-item">
+    <div><p class="edu-year">2018 — 2019</p></div>
+    <div>
+      <h2 class="edu-degree" data-zh="MA 時尚零售管理" data-en="MA Fashion Retail Management">MA 時尚零售管理</h2>
+      <p class="edu-school" data-zh="倫敦藝術大學 · 倫敦時尚學院，英國" data-en="University of the Arts London · London College of Fashion, UK">倫敦藝術大學 · 倫敦時尚學院，英國</p>
+    </div>
+  </div>
+  <div class="edu-item">
+    <div><p class="edu-year">2013 — 2017</p></div>
+    <div>
+      <h2 class="edu-degree" data-zh="BA 服裝設計" data-en="BA Fashion Design">BA 服裝設計</h2>
+      <p class="edu-school" data-zh="實踐大學，台北，台灣" data-en="Shih Chien University, Taipei, Taiwan">實踐大學，台北，台灣</p>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentLang = 'zh';
+
+const skillToJobs = {
+  '需求分析': ['job-commeet', 'job-engagedai', 'job-linkby'],
+  '用戶研究與客戶洞察': ['job-commeet', 'job-engagedai', 'job-linkby'],
+  '數據驅動決策': ['job-engagedai', 'job-vp'],
+  '跨職能團隊協作': ['job-commeet', 'job-engagedai', 'job-vp', 'job-linkby'],
+  '利害關係人管理': ['job-commeet', 'job-engagedai', 'job-vp', 'job-linkby'],
+  'PRD': ['job-commeet'],
+  'BPM／ERP 串接規劃': ['job-commeet'],
+};
+
+let toastTimer = null;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function skillToExp(el) {
+  const skill = el.getAttribute('data-skill');
+  const jobs = skillToJobs[skill] || [];
+  if (!jobs.length) return;
+  show('exp', document.querySelector('.nav-btn'));
+  document.querySelectorAll('.tag').forEach(t => t.classList.remove('highlighted'));
+  jobs.forEach(jobId => {
+    const job = document.getElementById(jobId);
+    if (!job) return;
+    job.querySelectorAll('.tag').forEach(tag => {
+      if (tag.getAttribute('data-skill') === skill) tag.classList.add('highlighted');
+    });
+  });
+  setTimeout(() => {
+    const firstJob = document.getElementById(jobs[0]);
+    if (firstJob) firstJob.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+  const label = currentLang === 'zh' ? skill : (el.getAttribute('data-en') || skill);
+  showToast(currentLang === 'zh' ? `顯示「${label}」相關經歷` : `Showing experience for "${label}"`);
+  setTimeout(() => document.querySelectorAll('.tag').forEach(t => t.classList.remove('highlighted')), 3500);
+}
+
+function tagToSkill(el) {
+  const skill = el.getAttribute('data-skill');
+  const skillsBtn = document.querySelector('.nav-btn[onclick*="skills"]');
+  show('skills', skillsBtn);
+  document.querySelectorAll('.skill-list li').forEach(li => li.classList.remove('highlighted'));
+  setTimeout(() => {
+    document.querySelectorAll('.skill-list li[data-skill]').forEach(li => {
+      if (li.getAttribute('data-skill') === skill) {
+        li.classList.add('highlighted');
+        li.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }, 50);
+  const label = currentLang === 'zh' ? skill : (el.getAttribute('data-en') || skill);
+  showToast(currentLang === 'zh' ? `跳至「${label}」技能說明` : `Jumped to skill "${label}"`);
+  setTimeout(() => document.querySelectorAll('.skill-list li').forEach(li => li.classList.remove('highlighted')), 3500);
+}
+
+function setLang(lang, btn) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('[data-zh]').forEach(el => {
+    if (el.tagName !== 'BUTTON' && !el.classList.contains('tag') && !el.classList.contains('tag-plain') && !el.classList.contains('nav-btn')) {
+      el.textContent = el.getAttribute('data-' + lang);
+    }
+  });
+  document.querySelectorAll('.tag[data-en]').forEach(tag => {
+    tag.textContent = lang === 'en' ? tag.getAttribute('data-en') : tag.getAttribute('data-skill');
+  });
+  document.querySelectorAll('.tag-plain[data-zh]').forEach(tag => {
+    tag.textContent = tag.getAttribute('data-' + lang);
+  });
+  document.querySelectorAll('.nav-btn[data-zh]').forEach(b => {
+    b.textContent = b.getAttribute('data-' + lang);
+  });
+}
+
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  document.querySelectorAll('.tag, .skill-list li').forEach(el => el.classList.remove('highlighted'));
+}
+</script>
+</body>
+</html>
