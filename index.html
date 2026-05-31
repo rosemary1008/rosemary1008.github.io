@@ -21,15 +21,16 @@
 }
 body { font-family: 'Inter', sans-serif; font-weight: 300; color: var(--text); background: var(--white); line-height: 1.7; }
 
+/* ── HEADER ── */
 header { background: linear-gradient(135deg, var(--navy) 0%, var(--blue-mid) 100%); color: white; padding: 64px 64px 48px; position: relative; overflow: hidden; }
 header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 360px; height: 360px; border-radius: 50%; background: rgba(255,255,255,0.04); }
 .header-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue-pale); margin-bottom: 16px; }
-.header-name { font-family: 'Playfair Display', serif; font-size: clamp(42px, 7vw, 72px); font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 20px; color: white; }
+.header-name { font-family: 'Playfair Display', serif; font-size: clamp(36px, 7vw, 72px); font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 20px; color: white; }
 .header-summary { max-width: 520px; margin-bottom: 36px; }
 .header-summary ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
 .header-summary li { font-size: 14px; color: rgba(255,255,255,0.75); padding-left: 16px; position: relative; font-weight: 300; }
 .header-summary li::before { content: ''; position: absolute; left: 0; top: 9px; width: 4px; height: 4px; border-radius: 50%; background: var(--blue-pale); }
-.header-contacts { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+.header-contacts { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 .header-contacts a, .header-contacts span { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; transition: color 0.2s; }
 .header-contacts a:hover { color: white; }
 .contact-sep { width: 1px; height: 14px; background: rgba(255,255,255,0.2); }
@@ -38,17 +39,20 @@ header::before { content: ''; position: absolute; top: -80px; right: -80px; widt
 .lang-btn { padding: 5px 14px; border: none; background: transparent; color: rgba(255,255,255,0.6); font-size: 12px; font-family: 'Inter', sans-serif; font-weight: 400; border-radius: 100px; cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em; }
 .lang-btn.active { background: white; color: var(--navy); font-weight: 500; }
 
+/* ── NAV ── */
 nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white; position: sticky; top: 0; z-index: 10; }
-.nav-inner { display: flex; overflow-x: auto; }
+.nav-inner { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.nav-inner::-webkit-scrollbar { display: none; }
 .nav-btn { padding: 18px 22px; background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted); font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; cursor: pointer; white-space: nowrap; transition: color 0.2s, border-color 0.2s; margin-bottom: -1px; }
 .nav-btn:hover { color: var(--navy); }
 .nav-btn.active { color: var(--blue-mid); border-bottom-color: var(--blue-mid); font-weight: 500; }
 
+/* ── SECTIONS ── */
 .section { display: none; padding: 40px 64px 60px; max-width: 960px; animation: fadeIn 0.25s ease; }
 .section.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-/* EXPERIENCE */
+/* ── EXPERIENCE ── */
 .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 48px; padding: 40px 0; border-bottom: 1px solid var(--border); }
 .exp-item:last-child { border-bottom: none; }
 .exp-period { font-size: 12px; color: var(--blue-mid); letter-spacing: 0.06em; margin-bottom: 6px; font-weight: 500; }
@@ -60,88 +64,99 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
 .exp-bullets li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--blue-light); }
 .bullet-label { font-weight: 500; color: var(--navy); }
 
-/* TAGS — clickable */
+/* ── TAGS ── */
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tag {
-  font-size: 11px; padding: 4px 10px;
-  background: var(--blue-frost); color: var(--blue-mid);
-  border-radius: 100px; letter-spacing: 0.03em;
-  border: 1px solid var(--blue-wash);
-  cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, transform 0.15s;
-  user-select: none;
-}
+.tag { font-size: 11px; padding: 4px 10px; background: var(--blue-frost); color: var(--blue-mid); border-radius: 100px; letter-spacing: 0.03em; border: 1px solid var(--blue-wash); cursor: pointer; transition: background 0.2s, border-color 0.2s, transform 0.15s; user-select: none; }
 .tag:hover { background: var(--blue-wash); border-color: var(--blue-light); transform: translateY(-1px); }
 .tag.highlighted { background: var(--navy); color: white; border-color: var(--navy); }
+.tag-plain { font-size: 11px; padding: 4px 10px; background: var(--blue-frost); color: var(--blue-mid); border-radius: 100px; letter-spacing: 0.03em; border: 1px solid var(--blue-wash); cursor: default; user-select: none; }
 
-/* TAGS — plain (no interaction) */
-.tag-plain {
-  font-size: 11px; padding: 4px 10px;
-  background: var(--blue-frost); color: var(--blue-mid);
-  border-radius: 100px; letter-spacing: 0.03em;
-  border: 1px solid var(--blue-wash);
-  cursor: default;
-  user-select: none;
-}
-
-/* SKILLS */
+/* ── SKILLS ── */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
 .skill-card { background: var(--blue-frost); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
 .skill-card-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 14px; font-weight: 500; }
 
-/* Clickable skill list */
 .skill-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.skill-list li {
-  font-size: 13px; color: var(--text);
-  display: flex; align-items: center; gap: 8px;
-  cursor: pointer; border-radius: 6px;
-  padding: 4px 6px; margin: -4px -6px;
-  transition: background 0.15s, color 0.15s;
-}
+.skill-list li { font-size: 13px; color: var(--text); display: flex; align-items: center; gap: 8px; cursor: pointer; border-radius: 6px; padding: 4px 6px; margin: -4px -6px; transition: background 0.15s, color 0.15s; }
 .skill-list li::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--blue-mid); flex-shrink: 0; }
 .skill-list li:hover { background: var(--blue-wash); }
 .skill-list li.highlighted { background: var(--navy); color: white; }
 .skill-list li.highlighted::before { background: var(--blue-pale); }
 
-/* Non-clickable skill list */
 .skill-list-plain { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .skill-list-plain li { font-size: 13px; color: var(--text); display: flex; align-items: center; gap: 8px; cursor: default; padding: 4px 0; }
 .skill-list-plain li::before { content: ''; display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--blue-mid); flex-shrink: 0; }
 
-/* Domain split B2B/B2C */
 .domain-section { margin-bottom: 14px; }
 .domain-section:last-child { margin-bottom: 0; }
 .domain-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
 
-/* TOAST */
-.toast {
-  position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
-  background: var(--navy); color: white; font-size: 12px;
-  padding: 8px 18px; border-radius: 100px;
-  opacity: 0; transition: opacity 0.3s, transform 0.3s;
-  pointer-events: none; z-index: 100; white-space: nowrap;
-}
+/* ── TOAST ── */
+.toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--navy); color: white; font-size: 12px; padding: 8px 18px; border-radius: 100px; opacity: 0; transition: opacity 0.3s, transform 0.3s; pointer-events: none; z-index: 100; white-space: nowrap; }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* EDU */
+/* ── EDUCATION ── */
 .edu-item { display: grid; grid-template-columns: 200px 1fr; gap: 48px; padding: 36px 0; border-bottom: 1px solid var(--border); }
 .edu-item:last-child { border-bottom: none; }
 .edu-year { font-size: 12px; color: var(--blue-mid); letter-spacing: 0.06em; font-weight: 500; }
 .edu-degree { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--navy); margin-bottom: 6px; }
 .edu-school { font-size: 13px; color: var(--muted); }
 
-
-
 .hint-text { font-size: 12px; color: var(--muted); margin-top: 24px; }
 
-@media (max-width: 700px) {
-  header { padding: 48px 24px 36px; }
-  nav { padding: 0 24px; }
-  .section { padding: 32px 24px 48px; }
-  .exp-item, .edu-item { grid-template-columns: 1fr; gap: 12px; }
-  .about-stats { grid-template-columns: 1fr 1fr; }
-  .about-grid { grid-template-columns: 1fr; }
-  .lang-toggle { top: 20px; right: 24px; }
+/* ══════════════════════════════
+   RWD — Tablet (≤ 860px)
+══════════════════════════════ */
+@media (max-width: 860px) {
+  header { padding: 52px 32px 40px; }
+  .lang-toggle { top: 20px; right: 32px; }
+  nav { padding: 0 32px; }
+  .section { padding: 32px 32px 48px; }
+
+  .exp-item { grid-template-columns: 1fr; gap: 6px; padding: 32px 0; }
+  .exp-item > div:first-child { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+  .exp-item > div:first-child .exp-period { margin-bottom: 0; }
+  .exp-item > div:first-child .exp-duration { margin-left: auto; }
+
+  .edu-item { grid-template-columns: 1fr; gap: 6px; padding: 28px 0; }
+  .edu-item > div:first-child { display: flex; align-items: center; gap: 8px; }
+
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ══════════════════════════════
+   RWD — Mobile (≤ 600px)
+══════════════════════════════ */
+@media (max-width: 600px) {
+  header { padding: 52px 20px 32px; }
+  .lang-toggle { top: 16px; right: 20px; }
+  .header-name { margin-bottom: 16px; }
+  .header-summary li { font-size: 13px; }
+  .header-contacts { gap: 10px; }
+  .header-contacts .contact-sep { display: none; }
+  .header-contacts a, .header-contacts span { font-size: 12px; }
+
+  nav { padding: 0 16px; }
+  .nav-btn { padding: 14px 14px; font-size: 12px; }
+
+  .section { padding: 24px 16px 48px; }
+
+  .exp-title { font-size: 18px; margin-bottom: 14px; }
+  .exp-bullets li { font-size: 13px; padding-left: 14px; }
+  .exp-bullets li::before { top: 9px; width: 4px; height: 4px; }
+
+  .skills-grid { grid-template-columns: 1fr; }
+  .skill-card { padding: 18px; }
+  .edu-degree { font-size: 17px; }
+
+  .toast { font-size: 11px; padding: 7px 14px; white-space: normal; text-align: center; max-width: 80vw; }
+}
+
+/* ── Print ── */
+@media print {
+  .lang-toggle, .toast { display: none !important; }
+  nav { position: static; }
+  .section { display: block !important; padding: 20px 0; }
 }
 </style>
 </head>
@@ -160,7 +175,7 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
     <ul>
       <li data-zh="5 年 B2B SaaS 產品經理經驗" data-en="5 years of B2B SaaS product management experience">5 年 B2B SaaS 產品經理經驗</li>
       <li data-zh="專注企業費用報銷與數位企業卡產品" data-en="Focused on enterprise expense management and corporate card products">專注企業費用報銷與數位企業卡產品</li>
-      <li data-zh="具 ERP 系統整合設計與大型企業導入實戰經驗" data-en="Hands-on ERP integration design and large enterprise onboarding experience">具 ERP 系統整合設計與大型企業導入實戰經驗</li>
+      <li data-zh="具 BPM/ERP 系統整合設計與大型企業導入經驗" data-en="BPM/ERP integration design and large enterprise onboarding experience">具 BPM/ERP 系統整合設計與大型企業導入經驗</li>
       <li data-zh="服務客戶涵蓋日月光 ASE、精誠資訊、KKCompany 等上市上櫃企業" data-en="Serving listed enterprises including ASE Group, Systex, and KKCompany">服務客戶涵蓋日月光 ASE、精誠資訊、KKCompany 等上市上櫃企業</li>
     </ul>
   </div>
@@ -178,13 +193,13 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
     <button class="nav-btn active" onclick="show('exp', this)" data-zh="工作經歷" data-en="Experience">工作經歷</button>
     <button class="nav-btn" onclick="show('skills', this)" data-zh="能力技能" data-en="Skills">能力技能</button>
     <button class="nav-btn" onclick="show('edu', this)" data-zh="學歷" data-en="Education">學歷</button>
-    
   </div>
 </nav>
 
-<!-- EXPERIENCE -->
+<!-- ══ EXPERIENCE ══ -->
 <div id="exp" class="section active">
 
+  <!-- COMMEET -->
   <div class="exp-item" id="job-commeet">
     <div>
       <p class="exp-period">2023.08 — <span data-zh="現在" data-en="Present">現在</span></p>
@@ -198,7 +213,7 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
         <li><span class="bullet-label" data-zh="需求分析與功能設計：" data-en="Requirements Analysis: ">需求分析與功能設計：</span><span data-zh="拆解 BD／CS 需求背後的根本原因，評估例外情境與跨客戶兼容性，確保解法可擴展且不增加使用者負擔；設計支援財務管控與多角色使用場景的產品功能與邏輯" data-en="Decomposed BD/CS requests to root causes, evaluated edge cases and cross-client compatibility; designed features supporting multi-role workflows and finance control">拆解 BD／CS 需求背後的根本原因，評估例外情境與跨客戶兼容性，確保解法可擴展且不增加使用者負擔；設計支援財務管控與多角色使用場景的產品功能與邏輯</span></li>
         <li><span class="bullet-label" data-zh="跨部門協作與專案管理：" data-en="Cross-functional Collaboration: ">跨部門協作與專案管理：</span><span data-zh="與開發團隊密切合作，撰寫 PRD，搭配數據佐證規劃細節，控管時程與交付品質" data-en="Collaborated closely with engineering, wrote data-backed PRDs, and managed timelines and delivery quality">與開發團隊密切合作，撰寫 PRD，搭配數據佐證規劃細節，控管時程與交付品質</span></li>
         <li><span class="bullet-label" data-zh="BPM × ERP 系統整合：" data-en="BPM × ERP Integration: ">BPM × ERP 系統整合：</span><span data-zh="設計跨系統資料拋轉規則，實現傳票與稅務檔自動建立，全面消除財務人員手動 key-in 作業，排除人工出錯風險；負責 API 驗測協作與規格確認" data-en="Designed cross-system data transfer rules to automate voucher and tax record creation — eliminating all manual data entry; led API validation and spec alignment">設計跨系統資料拋轉規則，實現傳票與稅務檔自動建立，全面消除財務人員手動 key-in 作業，排除人工出錯風險；負責 API 驗測協作與規格確認</span></li>
-        <li><span class="bullet-label" data-zh="日月光 ASE 企業導入專案：" data-en="ASE Group Onboarding: ">日月光 ASE 企業導入專案：</span><span data-zh="擔任系統導入 PM（歷時半年），負責需求探討、工時評估與報價協作，協助客戶從零設計財務費用管理流程，同時對接財務主管、IT 與基層使用者，於導入過程持續提供使用情境建議" data-en="Served as implementation PM (6 months), handling requirements scoping, effort estimation and pricing coordination; helped client design expense workflows from scratch while managing finance leads, IT, and end users">擔任系統導入 PM（歷時半年），負責需求探討、工時評估與報價協作，協助客戶從零設計財務費用管理流程，同時對接財務主管、IT 與基層使用者，於導入過程持續提供使用情境建議</span></li>
+        <li><span class="bullet-label" data-zh="大型企業導入：" data-en="Enterprise Onboarding: ">大型企業導入：</span><span data-zh="負責大型企業系統導入顧問與功能開發，負責需求探討、工時評估與報價協作，協助客戶從零設計財務費用管理流程，同時對接財務主管、IT 與基層使用者，於導入過程持續提供使用情境建議" data-en="Led enterprise system onboarding consulting and feature development; scoped requirements, estimated effort, and coordinated pricing; helped clients design expense workflows from scratch while managing finance leads, IT, and end users — client: ASE Group">負責大型企業系統導入顧問與功能開發，負責需求探討、工時評估與報價協作，協助客戶從零設計財務費用管理流程，同時對接財務主管、IT 與基層使用者，於導入過程持續提供使用情境建議，客戶案例：日月光</span></li>
       </ul>
       <div class="tags">
         <span class="tag" data-skill="需求分析" data-en="Requirements Analysis" onclick="tagToSkill(this)">需求分析</span>
@@ -213,6 +228,7 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
     </div>
   </div>
 
+  <!-- ENGAGED.AI -->
   <div class="exp-item" id="job-engagedai">
     <div>
       <p class="exp-period">2022.04 — 2023.06</p>
@@ -223,8 +239,8 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
       <h2 class="exp-title" data-zh="營運副總兼 Engaged.AI 產品經理" data-en="VP of Operations & Engaged.AI PM">營運副總兼 Engaged.AI 產品經理</h2>
       <ul class="exp-bullets">
         <li><span class="bullet-label" data-zh="產品用戶需求分析：" data-en="User Research: ">產品用戶需求分析：</span><span data-zh="深入了解用戶行為數據和使用狀況，進行用戶訪談，制定產品發展策略，持續優化和滿足用戶需求" data-en="Conducted user interviews and analyzed behavior data to shape product strategy and continuously improve the product">深入了解用戶行為數據和使用狀況，進行用戶訪談，制定產品發展策略，持續優化和滿足用戶需求</span></li>
-        <li><span class="bullet-label" data-zh="用戶與業績增長：" data-en="Growth: ">用戶與業績增長：</span><span data-zh="建立可複製的用戶活化方法論（訪談 → 線上講座 → 主動外拓），親自驗證後轉交 intern 規模化執行，帶動用戶數增加 33%、單月業績最高成長 23%" data-en="Built a repeatable activation methodology (interviews → webinars → outbound), validated personally then scaled via interns — driving 33% user growth and 23% peak monthly revenue increase">建立可複製的用戶活化方法論（訪談 → 線上講座 → 主動外拓），親自驗證後轉交 intern 規模化執行，帶動用戶數增加 33%、單月業績最高成長 23%</span></li>
-        <li><span class="bullet-label" data-zh="產品營運與問題解決：" data-en="Product Operations: ">產品營運與問題解決：</span><span data-zh="排序問題優先順序，領導客服部門，最大化資源解決客戶問題；與開發團隊協作排查問題，確保產品穩定性" data-en="Prioritized issues, led customer support team, and collaborated with engineering to debug and ensure product stability">排序問題優先順序，領導客服部門，最大化資源解決客戶問題；與開發團隊協作排查問題，確保產品穩定性</span></li>
+        <li><span class="bullet-label" data-zh="Growth 方法論建立：" data-en="Growth Methodology: ">Growth 方法論建立：</span><span data-zh="根據用戶調研與訪談結果，規劃並驗證可複製的用戶活化流程（訪談 → 線上講座 → 主動外拓），系統化推動執行，帶動用戶數成長 33%、單月業績最高成長 23%" data-en="Designed and validated a repeatable activation funnel (interviews → webinars → outbound) based on user research; systematized execution drove 33% user growth and 23% peak monthly revenue increase">根據用戶調研與訪談結果，規劃並驗證可複製的用戶活化流程（訪談 → 線上講座 → 主動外拓），系統化推動執行，帶動用戶數成長 33%、單月業績最高成長 23%</span></li>
+        <li><span class="bullet-label" data-zh="產品穩定性維護：" data-en="Product Stability: ">產品穩定性維護：</span><span data-zh="持續監控產品表現與用戶回饋，評估問題優先順序，協調 API 調整與問題排查，確保服務穩定運作" data-en="Monitored product performance and user feedback, prioritized issues, coordinated API adjustments and debugging to ensure service stability">持續監控產品表現與用戶回饋，評估問題優先順序，協調 API 調整與問題排查，確保服務穩定運作</span></li>
       </ul>
       <div class="tags">
         <span class="tag" data-skill="需求分析" data-en="Requirements Analysis" onclick="tagToSkill(this)">需求分析</span>
@@ -237,6 +253,7 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
     </div>
   </div>
 
+  <!-- VP OPS -->
   <div class="exp-item" id="job-vp">
     <div>
       <p class="exp-period">2021.08 — 2022.04</p>
@@ -261,6 +278,7 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
     </div>
   </div>
 
+  <!-- LINKBY -->
   <div class="exp-item" id="job-linkby">
     <div>
       <p class="exp-period">2020.08 — 2021.08</p>
@@ -270,9 +288,9 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
     <div>
       <h2 class="exp-title" data-zh="LinkBy 社群電商營運" data-en="LinkBy Social Commerce">LinkBy 社群電商營運</h2>
       <ul class="exp-bullets">
-        <li><span class="bullet-label" data-zh="市場與用戶需求：" data-en="Market Validation: ">市場與用戶需求：</span><span data-zh="模擬測試環境，驗證市場需求，釐清用戶需求，回饋給開發團隊開發 MVP 及後續功能" data-en="Simulated test environments to validate market demand and user needs, feeding insights to dev team for MVP development">模擬測試環境，驗證市場需求，釐清用戶需求，回饋給開發團隊開發 MVP 及後續功能</span></li>
-        <li><span class="bullet-label" data-zh="用戶成長與客戶成功：" data-en="Growth & Success: ">用戶成長與客戶成功：</span><span data-zh="與 1,000 位健身教練合作，協助掌握推廣技巧，創造平均每月 10% 的業績成長" data-en="Partnered with 1,000+ fitness coaches on promotional strategy, driving average 10% monthly revenue growth">與 1,000 位健身教練合作，協助掌握推廣技巧，創造平均每月 10% 的業績成長</span></li>
-        <li><span class="bullet-label" data-zh="電商與客服管理：" data-en="Operations: ">電商與客服管理：</span><span data-zh="招商與 5,000+ 個商品資訊上架管理，協助消費者服務" data-en="Managed onboarding and listings for 5,000+ SKUs; supported consumer inquiries">招商與 5,000+ 個商品資訊上架管理，協助消費者服務</span></li>
+        <li><span class="bullet-label" data-zh="市場驗證與 MVP：" data-en="Market Validation & MVP: ">市場驗證與 MVP：</span><span data-zh="從零開始模擬測試環境，驗證市場需求，釐清 B2C 用戶痛點，回饋開發團隊進行 MVP 迭代" data-en="Built test environments from scratch to validate market demand and uncover B2C pain points; fed insights to dev team for iterative MVP development">從零開始模擬測試環境，驗證市場需求，釐清 B2C 用戶痛點，回饋開發團隊進行 MVP 迭代</span></li>
+        <li><span class="bullet-label" data-zh="用戶成長與客戶成功：" data-en="Growth & Success: ">用戶成長與客戶成功：</span><span data-zh="與逾 1,000 位健身教練合作，建立推廣策略與使用者教育機制，達成平均每月 10% 的業績成長" data-en="Partnered with 1,000+ fitness coaches, built promotion strategies and user education programs — achieving average 10% monthly revenue growth">與逾 1,000 位健身教練合作，建立推廣策略與使用者教育機制，達成平均每月 10% 的業績成長</span></li>
+        <li><span class="bullet-label" data-zh="電商營運管理：" data-en="E-commerce Operations: ">電商營運管理：</span><span data-zh="負責供應商招募與 5,000+ 商品資訊上架管理，建立客服處理機制，確保消費者問題獲得即時回應與解決" data-en="Managed vendor recruitment and 5,000+ product listings; established customer service processes to ensure timely resolution of consumer issues">負責供應商招募與 5,000+ 商品資訊上架管理，建立客服處理機制，確保消費者問題獲得即時回應與解決</span></li>
       </ul>
       <div class="tags">
         <span class="tag" data-skill="需求分析" data-en="Requirements Analysis" onclick="tagToSkill(this)">需求分析</span>
@@ -285,9 +303,10 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
       </div>
     </div>
   </div>
+
 </div>
 
-<!-- SKILLS -->
+<!-- ══ SKILLS ══ -->
 <div id="skills" class="section">
   <div class="skills-grid">
 
@@ -308,6 +327,7 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
       <p class="skill-card-label" data-zh="工具" data-en="Tools">工具</p>
       <ul class="skill-list-plain">
         <li>Claude</li>
+        <li>Gemini</li>
         <li>ChatGPT</li>
         <li>ClickUp</li>
         <li>Notion</li>
@@ -346,7 +366,7 @@ nav { border-bottom: 1px solid var(--border); padding: 0 64px; background: white
   <p class="hint-text" data-zh="💡 點擊核心能力項目，可跳至對應的工作經歷" data-en="💡 Click a core skill to jump to the related work experience">💡 點擊核心能力項目，可跳至對應的工作經歷</p>
 </div>
 
-<!-- EDUCATION -->
+<!-- ══ EDUCATION ══ -->
 <div id="edu" class="section">
   <div class="edu-item">
     <div><p class="edu-year">2018 — 2019</p></div>
